@@ -1,0 +1,12 @@
+{
+  "name": "timo-markdown",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "bin": { "timo-markdown": "./bin/timo-markdown.js" },
+  "scripts": {
+    "build": "node bin/timo-markdown.js build",
+    "test": "node --test"
+  },
+  "engines": { "node": ">=20" }
+}
