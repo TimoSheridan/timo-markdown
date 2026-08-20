@@ -8,6 +8,12 @@ This project follows Semantic Versioning for prompt behavior:
 
 Release tags use `prompts-vX.Y.Z`.
 
+## 0.2.0 - 2026-08-20
+
+- Replace instruction bodies with blank ordered rule templates.
+- Keep versioning and skill metadata intact.
+- Add the first user-defined rule: all in-scope Git and pull-request actions are pre-authorized except merging.
+
 ## 0.1.0 - 2026-08-20
 
 - Add the initial repository-level agent policy.

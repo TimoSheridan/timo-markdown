@@ -1,11 +1,11 @@
 schema_version: 1
-name: "timo-codex-prompts"
-version: "0.1.0"
+name: "timo-prompts"
+version: "0.2.0"
 artifacts:
   - path: "AGENTS.md"
-    role: "always-on repository policy and skill routing"
+    role: "rule template"
   - path: ".codex/skills/long-horizon/SKILL.md"
-    role: "persistent multi-agent, multi-PR delivery workflow"
+    role: "long-running rule template"
   - path: ".codex/skills/long-horizon/agents/openai.yaml"
     role: "skill discovery metadata and default invocation"
 release:

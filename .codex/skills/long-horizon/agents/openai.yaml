@@ -1,4 +1,4 @@
 interface:
-  display_name: "Long-Horizon Delivery"
-  short_description: "Run persistent multi-PR engineering work"
-  default_prompt: "Use $long-horizon to complete this substantial task as multiple reviewable pull requests."
+  display_name: "Long-Horizon Rules"
+  short_description: "Apply user-defined long-running work rules"
+  default_prompt: "Use $long-horizon for this task."
