@@ -192,6 +192,8 @@ Errors use `path:line:column CODE message`. Codes are stable API; wording may im
 | Code | Meaning |
 | --- | --- |
 | `E_MISSING_META` | Required metadata is absent |
+| `E_MISSING_SOURCE` | A required Markdown source file is absent |
+| `E_MISSING_ASSET` | A referenced local asset is absent or outside `/assets/` |
 | `E_UNKNOWN_META` | Metadata key is not part of the file's schema |
 | `E_DUPLICATE_META` | Metadata key appears more than once |
 | `E_BAD_URL` | URL metadata is not an absolute HTTP(S) URL |

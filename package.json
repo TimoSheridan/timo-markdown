@@ -4,10 +4,15 @@
   "private": true,
   "type": "module",
   "exports": "./src/index.js",
+  "bin": {
+    "timo-markdown": "./bin/timo-markdown.js"
+  },
   "engines": {
     "node": ">=18"
   },
   "scripts": {
+    "build": "node ./bin/timo-markdown.js build",
+    "check": "node ./bin/timo-markdown.js check",
     "test": "node --test"
   }
 }
