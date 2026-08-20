@@ -1,7 +1,14 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 
-import { parseHome, parseReads, parseSite, renderInline, renderPages } from '../src/index.js';
+import {
+  parseFooter,
+  parseHome,
+  parseReads,
+  parseSite,
+  renderInline,
+  renderPages,
+} from '../src/index.js';
 
 const site = parseSite(`---
 language: en
@@ -42,6 +49,28 @@ page-heading: Recent reads
 - Archived book
 `);
 
+const footerSource = `:::ticker direction=forward
+- first row
+:::
+
+:::ticker direction=reverse
+- second row
+:::
+
+:::ticker direction=forward
+- third row
+:::
+
+:::ticker direction=reverse
+- fourth row
+:::
+`;
+
+const footers = {
+  home: parseFooter(footerSource, 'content/footers/home.md'),
+  reads: parseFooter(footerSource, 'content/footers/reads.md'),
+};
+
 test('renders safe inline markup and external link behavior', () => {
   assert.equal(
     renderInline([
@@ -62,7 +91,7 @@ test('refuses executable and protocol-relative link destinations', () => {
 });
 
 test('renders the fixed home sections and only the configured read preview', () => {
-  const pages = renderPages({ site, home, reads });
+  const pages = renderPages({ site, home, reads, footers });
   const html = pages['index.html'];
   assert.match(html, /Writing/);
   assert.match(html, /Press/);
@@ -74,7 +103,7 @@ test('renders the fixed home sections and only the configured read preview', () 
 });
 
 test('renders only archived reads on the reads route', () => {
-  const html = renderPages({ site, home, reads })['reads/index.html'];
+  const html = renderPages({ site, home, reads, footers })['reads/index.html'];
   assert.match(html, /Recent reads/);
   assert.match(html, /Archived book/);
   assert.doesNotMatch(html, /Newest book/);
@@ -82,7 +111,7 @@ test('renders only archived reads on the reads route', () => {
 });
 
 test('renders route-independent assets and complete social metadata', () => {
-  const pages = renderPages({ site, home, reads });
+  const pages = renderPages({ site, home, reads, footers });
   for (const html of [pages['index.html'], pages['reads/index.html']]) {
     assert.match(html, /href="\/style\.css"/);
     assert.match(html, /src="\/assets\/timo\.png"/);
@@ -93,7 +122,7 @@ test('renders route-independent assets and complete social metadata', () => {
 });
 
 test('preserves the live static layout constants', () => {
-  const css = renderPages({ site, home, reads })['style.css'];
+  const css = renderPages({ site, home, reads, footers })['style.css'];
   assert.match(css, /--off-white: #f5f5f5/);
   assert.match(css, /--blue: #3366cc/);
   assert.match(css, /max-height: 100px/);
