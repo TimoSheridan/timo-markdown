@@ -1,6 +1,6 @@
 schema_version: 1
 name: "timo-prompts"
-version: "0.2.0"
+version: "0.3.0"
 artifacts:
   - path: "AGENTS.md"
     role: "rule template"

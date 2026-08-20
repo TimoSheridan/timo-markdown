@@ -1,4 +1,4 @@
-<!-- prompt-pack: timo-prompts@0.2.0 -->
+<!-- prompt-pack: timo-prompts@0.3.0 -->
 
 # Rules
 

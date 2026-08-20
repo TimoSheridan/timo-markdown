@@ -8,6 +8,10 @@ This project follows Semantic Versioning for prompt behavior:
 
 Release tags use `prompts-vX.Y.Z`.
 
+## 0.3.0 - 2026-08-20
+
+- Add the first four user-defined long-horizon rules.
+
 ## 0.2.0 - 2026-08-20
 
 - Replace instruction bodies with blank ordered rule templates.
