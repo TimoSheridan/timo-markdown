@@ -1,2 +1,4 @@
 export { LanguageError } from './errors.js';
 export { parseFooter, parseHome, parseReads, parseSite } from './parser.js';
+export { renderDocument, renderInline, renderPages } from './renderer.js';
+export { BASE_STYLES } from './theme.js';
