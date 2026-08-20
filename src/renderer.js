@@ -1,13 +1,7 @@
 import { BASE_STYLES } from './theme.js';
-
-function escapeHtml(value) {
-  return String(value)
-    .replaceAll('&', '&amp;')
-    .replaceAll('<', '&lt;')
-    .replaceAll('>', '&gt;')
-    .replaceAll('"', '&quot;')
-    .replaceAll("'", '&#39;');
-}
+import { escapeHtml } from './escape.js';
+import { MOTION_STYLES } from './motion-theme.js';
+import { renderFooter } from './ticker.js';
 
 function isExternal(href) {
   return /^https?:\/\//i.test(href);
@@ -113,10 +107,13 @@ export function renderDocument(site, content, footer = '') {
 `;
 }
 
-export function renderPages({ site, home, reads }) {
+export function renderPages({ site, home, reads, footers }) {
+  if (!footers?.home || !footers?.reads) {
+    throw new TypeError('renderPages requires home and reads footers');
+  }
   return {
-    'index.html': renderDocument(site, renderHomeContent(home, reads)),
-    'reads/index.html': renderDocument(site, renderReadsContent(reads)),
-    'style.css': BASE_STYLES,
+    'index.html': renderDocument(site, renderHomeContent(home, reads), renderFooter(footers.home)),
+    'reads/index.html': renderDocument(site, renderReadsContent(reads), renderFooter(footers.reads)),
+    'style.css': `${BASE_STYLES}\n${MOTION_STYLES}`,
   };
 }
