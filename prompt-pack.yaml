@@ -1,0 +1,13 @@
+schema_version: 1
+name: "timo-prompts"
+version: "0.3.0"
+artifacts:
+  - path: "AGENTS.md"
+    role: "rule template"
+  - path: ".codex/skills/long-horizon/SKILL.md"
+    role: "long-running rule template"
+  - path: ".codex/skills/long-horizon/agents/openai.yaml"
+    role: "skill discovery metadata and default invocation"
+release:
+  tag_prefix: "prompts-v"
+  compatibility: "semver"

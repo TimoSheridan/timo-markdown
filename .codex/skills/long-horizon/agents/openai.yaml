@@ -1,0 +1,4 @@
+interface:
+  display_name: "Long-Horizon Rules"
+  short_description: "Apply user-defined long-running work rules"
+  default_prompt: "Use $long-horizon for this task."
