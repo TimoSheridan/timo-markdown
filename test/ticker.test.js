@@ -54,6 +54,18 @@ test('escapes authored ticker text and alternatives', () => {
   assert.match(html, /c&lt;d/);
 });
 
+test('preserves authored spaces on both sides of a vertical choice', () => {
+  const custom = structuredClone(footer);
+  custom.rows[0].items[0] = [
+    { type: 'text', value: 'registered ' },
+    { type: 'vertical', choices: ['oklahoma', 'london'] },
+    { type: 'text', value: ' voter' },
+  ];
+  const html = renderFooter(custom);
+  assert.match(html, /registered&nbsp;<span class="box">/);
+  assert.match(html, /<\/ul><\/span>&nbsp;voter/);
+});
+
 test('locks the measured live animation and wrapper constants', () => {
   assert.match(MOTION_STYLES, /flex-direction: column/);
   assert.match(MOTION_STYLES, /marquee 120s linear infinite/);

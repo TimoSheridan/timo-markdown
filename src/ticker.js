@@ -3,7 +3,11 @@ import { escapeHtml } from './escape.js';
 export const TICKER_COPIES = 8;
 
 function renderPart(part) {
-  if (part.type === 'text') return escapeHtml(part.value);
+  if (part.type === 'text') {
+    return escapeHtml(part.value)
+      .replace(/^ +/, (spaces) => '&nbsp;'.repeat(spaces.length))
+      .replace(/ +$/, (spaces) => '&nbsp;'.repeat(spaces.length));
+  }
   if (part.type === 'vertical') {
     const choices = part.choices.map((choice) => `<li>${escapeHtml(choice)}</li>`).join('');
     return `<span class="box"><ul class="vertical-scroll-container">${choices}</ul></span>`;
